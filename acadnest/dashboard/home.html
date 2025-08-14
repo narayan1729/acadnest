@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="resources/css/styles.css">
+        <title>Brand Title</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__container">
+                <!-- yahan par default user icon lagaana chahte to lgaa sakte hai yaa fir firebase se authentication 
+                    ke baad image fire karwa lijiyega -->
+                    <img src="resources/img/avatar.jpeg" alt="" class="header__img">
+
+                <a href="#" class="header__logo">ACADNEST</a>
+            
+                <div class="header__toggle">
+                    <i class='bx bx-menu' id="header-toggle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <a href="#" class="nav__link nav__logo">
+                        <i class='bx bxs-disc nav__icon' ></i>
+                        <span class="nav__logo-name">ACADNEST</span>
+                    </a>
+    
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Profile</h3>
+    
+                            <a href="#home" class="nav__link">
+                                <i class='bx bx-home nav__icon' ></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                            
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Profile</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="changePassword.html" class="nav__dropdown-item">Password</a>
+                                        <a href="deleteAccount.html" class="nav__dropdown-item">Delete Account</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+    
+                       
+                    </div>
+                </div>
+
+                <a href="../index.html" class="nav__link nav__logout">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+
+        <main>
+            <h2>Select Your Department</h2>
+            <p></p>
+
+            <center>
+            <a href=""><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">Biotech</button></a>
+            <a href="semesterSelectionCSE.html"><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">CSE</button></a>
+            <a href=""><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">ECE</button></a>
+            <a href=""><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">Textile</button></a>
+            <a href=""><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">ICE</button></a>
+            <a href=""><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">IPE</button></a>
+            <a href=""><button class="departSelectButton" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">Mechanical</button></a>
+        </center>
+
+        </main>
+
+        <script>
+            const showMenu = (headerToggle, navbarId) =>{
+            const toggleBtn = document.getElementById(headerToggle),
+            nav = document.getElementById(navbarId)
+    
+            if(headerToggle && navbarId){
+                toggleBtn.addEventListener('click', ()=>{
+                nav.classList.toggle('show-menu')
+                toggleBtn.classList.toggle('bx-x')
+            })
+        }
+    }
+showMenu('header-toggle','navbar')
+
+
+        </script>
+    </body>
+</html>

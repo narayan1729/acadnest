@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="resources/css/styles.css">
+        <title>Brand Title</title>
+        <style>
+            .semester {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__container">
+                <!-- yahan par default user icon lagaana chahte to lgaa sakte hai yaa fir firebase se authentication 
+                    ke baad image fire karwa lijiyega -->
+                    <img src="resources/img/avatar.jpeg" alt="" class="header__img">
+
+                <a href="#" class="header__logo">ACADNEST</a>
+
+            
+                <div class="header__toggle">
+                    <i class='bx bx-menu' id="header-toggle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <a href="#" class="nav__link nav__logo">
+                        <i class='bx bxs-disc nav__icon' ></i>
+                        <span class="nav__logo-name">ACADNEST</span>
+                    </a>
+    
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Profile</h3>
+    
+                            <a href="#home" class="nav__link">
+                                <i class='bx bx-home nav__icon' ></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                            
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Profile</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="changePassword.html" class="nav__dropdown-item">Password</a>
+                                        <a href="deleteAccount.html" class="nav__dropdown-item">Delete Account</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+    
+                       
+                    </div>
+                </div>
+
+                <a href="../index.html" class="nav__link nav__logout">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+
+        <main>
+
+            <div id="SelectionContent">
+
+            <h2>Select Your Semester</h2>
+            <p class="headP" style="margin-top: -15px;opacity:0.8;">Department: <span class="active">CSE </span></p>
+
+
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td><label><input type="radio" name="department" value="sem1" onchange="showSemester('sem1')"> Semester 1</label></td>
+                        <td><label><input type="radio" name="department" value="sem2" onchange="showSemester('sem2')"> Semester 2</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="department" value="sem3" onchange="showSemester('sem3')"> Semester 3</label></td>
+                        <td><label><input type="radio" name="department" value="sem4" onchange="showSemester('sem4')"> Semester 4</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="department" value="sem5" onchange="showSemester('sem5')"> Semester 5</label></td>
+                        <td><label><input type="radio" name="department" value="sem6" onchange="showSemester('sem6')"> Semester 6</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="department" value="sem7" onchange="showSemester('sem7')"> Semester 7</label></td>
+                        <td><label><input type="radio" name="department" value="sem8" onchange="showSemester('sem8')"> Semester 8</label></td>
+                    </tr>
+                </table>
+            </div>
+            
+                
+            <button class="departSelectButton" id="goButton" onclick="showSelectedSemester()" style="margin-top: 1em;margin-bottom:1em;text-align:center;cursor:pointer;">Go</button>
+
+            <div class="warning"style="display:none;"id="warning">
+                <p>Please select your Semester.</p>
+            </div>
+    </div>
+
+
+        <!-- ====== CONTENTS ====== -->
+        <div class="semester" id="sem1">Semester 1 content</div>
+        <div class="semester" id="sem2">Semester 2 content</div>
+        <div class="semester" id="sem3">Semester 3 content</div>
+        <div class="semester" id="sem4">Semester 4 content</div>
+        <div class="semester" id="sem5">Semester 5 content</div>
+        <div class="semester" id="sem6">Semester 6 content</div>
+        <div class="semester" id="sem7">Semester 7 content</div>
+        <div class="semester" id="sem8">Semester 8 content</div>
+        
+        </main>
+
+        <script>
+            const showMenu = (headerToggle, navbarId) =>{
+            const toggleBtn = document.getElementById(headerToggle),
+            nav = document.getElementById(navbarId)
+    
+            if(headerToggle && navbarId){
+                toggleBtn.addEventListener('click', ()=>{
+                nav.classList.toggle('show-menu')
+                toggleBtn.classList.toggle('bx-x')
+            })
+        }
+    }
+showMenu('header-toggle','navbar')
+
+//for redirection
+var selectedSemester = null;
+
+function showSemester(semester) {
+    selectedSemester = semester;
+}
+
+function showSelectedSemester() {
+    if (selectedSemester !== null) {
+        // Hide the warning div
+        var warningDiv = document.getElementById('warning');
+        warningDiv.style.display = 'none';
+
+        // Hide all semester divs
+        var semesterDivs = document.querySelectorAll('.semester');
+        semesterDivs.forEach(function(semesterDiv) {
+            semesterDiv.style.display = 'none';
+        });
+
+        // Show the selected semester div
+        var selectedSemesterDiv = document.getElementById(selectedSemester);
+        selectedSemesterDiv.style.display = 'block';
+
+        // Hide the result div
+        var SelectionContent = document.getElementById('SelectionContent');
+        SelectionContent.style.display = 'none';
+    }
+    else {
+        // Show the warning div
+        var warningDiv = document.getElementById('warning');
+        warningDiv.style.display = 'block';
+    }
+}
+        </script>
+    </body>
+</html>
